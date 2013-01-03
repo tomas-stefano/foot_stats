@@ -18,15 +18,18 @@ Or install it yourself as:
 
 ## Setup
 
+```ruby
     FootStats::Setup.setup do |config|
       config.username = "username"
       config.password = "password"
       config.logger   = Rails.logger
       config.base_url = "http://footstats.com"
     end
+```
 
 ## Usage
 
+```ruby
      # Championship
      #
      championships = FootStats::Championship.all
@@ -53,6 +56,7 @@ Or install it yourself as:
      # Narrations
      #
      match.narrations
+```
 
 ## Next
 
