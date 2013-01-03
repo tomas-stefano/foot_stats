@@ -19,7 +19,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'activesupport'
   gem.add_dependency 'rest-client'
-  gem.add_dependency 'yajl-ruby'
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'vcr'
