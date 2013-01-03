@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://footstats.com.br/modyo.asmx/ListaPartidas
+    body:
+      encoding: US-ASCII
+      string: Usuario=&Senha=&Campeonato=198
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      content-length:
+      - '30'
+      content-type:
+      - application/x-www-form-urlencoded
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        VGh1LCAwMyBKYW4gMjAxMyAwMjo1NTo1NiBHTVQ=
+      !binary "c2VydmVy":
+      - !binary |-
+        TWljcm9zb2Z0LUlJUy82LjA=
+      !binary "eC1wb3dlcmVkLWJ5":
+      - !binary |-
+        QVNQLk5FVA==
+      !binary "eC1hc3BuZXQtdmVyc2lvbg==":
+      - !binary |-
+        Mi4wLjUwNzI3
+      !binary "Y2FjaGUtY29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "cHJhZ21h":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "ZXhwaXJlcw==":
+      - !binary |-
+        LTE=
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        dGV4dC94bWw7IGNoYXJzZXQ9dXRmLTg=
+      !binary "Y29udGVudC1sZW5ndGg=":
+      - !binary |-
+        MTM4
+    body:
+      encoding: ASCII-8BIT
+      string: >
+        {"Partidas": {
+            "Partida":[{
+                "@Id":"34829",
+                "Equipe":[
+                    {"@Id":"1077","@Nome":"Caldense","@Placar":" ","@PlacarPenaltis":"","@Tipo":"Mandante"},
+                    {"@Id":"1242","@Nome":"Tupi","@Placar":" ","@PlacarPenaltis":"","@Tipo":"Visitante"}
+                ],
+                "Data":"1/29/2012 4:00:00 PM",
+                "Status":"Partida não iniciada",
+                "Arbitro":"0",
+                "Estadio":"Ronaldo Junqueira",
+                "Cidade":"Poços de Caldas",
+                "Estado":"MG",
+                "Pais":"Brasil",
+                "TemEstatistica":"Não",
+                "TemNarracao":"Não",
+                "Rodada":"1",
+                "Fase":"Primeira Fase",
+                "Taca":"9","Grupo":"3",
+                "NumeroJogo":"100",
+                "AoVivo":"Não"
+            }]
+        }}
+    http_version: !binary |-
+      MS4x
+  recorded_at: Thu, 03 Jan 2013 02:56:00 GMT
+recorded_with: VCR 2.3.0
