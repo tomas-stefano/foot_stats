@@ -3,11 +3,20 @@ module FootStats
     attr_accessor :source_id, :full_name, :city, :country
 
     def self.all(options={})
-      request  = Request.new(self, :IdCampeonato => options.fetch(:championship))
+      championship_id = options.fetch(:championship)
+
+      request = Request.new(self,
+        :IdCampeonato => options.fetch(:championship),
+        :stream_key   => "team-championship-#{championship_id}")
+
       response = request.parse
 
       return response.error if response.error?
 
+      updated_response response, options
+    end
+
+    def self.parse_response(response)
       response.collect do |team|
         Team.new(
           :source_id => team['@Id'].to_i,

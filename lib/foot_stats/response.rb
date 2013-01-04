@@ -2,13 +2,15 @@ require 'active_support/json'
 
 module FootStats
   class Response
-    attr_accessor :resource_key, :body, :parsed_response
+    attr_accessor :resource_key, :body, :parsed_response, :payload
     REGEX_PARSER = /\{.*}/m
 
     def initialize(options={})
       @resource_key    = options.fetch(:resource_key)
       @body            = options.fetch(:body)
+      @stream_key      = options[:stream_key]
       @parsed_response = ActiveSupport::JSON.decode(json_response)
+      check_stream
     end
 
     # Return the error response object with the message if had errors.
@@ -17,6 +19,18 @@ module FootStats
     #
     def error
       ErrorResponse.new(@parsed_response['Erro']['@Mensagem']) if error?
+    end
+
+    # Verifies if response is up-to-date
+    #
+    # @return [Boolean]
+    #
+    def updated?
+      if @stream_key
+        Stream.new(@stream_key).updated?(@payload)
+      else
+        true
+      end
     end
 
     # Verifies if the response had errors.
@@ -53,6 +67,13 @@ module FootStats
     alias :map :collect
 
     private
+    def check_stream
+      if @stream_key
+        @payload = Digest::MD5.hexdigest @body
+      else
+        @payload = nil
+      end
+    end
 
     def json_response
       @body.scan(REGEX_PARSER).first
