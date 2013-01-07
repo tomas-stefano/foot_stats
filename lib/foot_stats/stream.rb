@@ -7,8 +7,8 @@ module FootStats
     end
 
     # Stores latest payload
-    def store(payload)
-      payload_store[@key] = payload
+    def store(value)
+      payload_store[@key] = value
     end
 
     # Verifies if payload is up-to-date

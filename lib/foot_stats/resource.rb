@@ -14,10 +14,15 @@ module FootStats
     # @return [Array]
     #
     def self.updated_response(response, options)
-      if !options[:updated] || response.updated?
-        parse_response response
+      if options[:updated]
+        if response.updated?
+          response.readed
+          parse_response response
+        else
+          []
+        end
       else
-        []
+        parse_response response
       end
     end
 

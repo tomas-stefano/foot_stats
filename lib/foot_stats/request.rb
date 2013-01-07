@@ -38,8 +38,8 @@ module FootStats
     #
     # @return [Response]
     #
-    def parse
-      Response.new(resource_key: @resource_key, body: @response_body)
+    def parse(options = {})
+      Response.new({resource_key: @resource_key, body: @response_body}.merge options)
     end
 
     # Passing the setup params configured in your app.

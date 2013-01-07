@@ -7,7 +7,7 @@ module FootStats
     # @return [Array]
     #
     def self.all(options = {})
-      response = Request.new(self, stream_key: 'championships').parse
+      response = Request.new(self).parse stream_key: 'championships'
 
       return response.error if response.error?
 
