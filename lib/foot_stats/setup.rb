@@ -4,10 +4,11 @@ module FootStats
   # @example
   #
   #    FootStats::Setup.setup do |config|
-  #      config.username = "foo"
-  #      config.password = "bar"
-  #      config.logger   = Rails.logger
-  #      config.base_url = "http://footstats.com.br/modyo.asmx/"
+  #      config.username      = "foo"
+  #      config.password      = "bar"
+  #      config.logger        = Rails.logger
+  #      config.base_url      = "http://footstats.com.br/modyo.asmx/"
+  #      config.payload_store = Redis.new
   #    end
   #
   class Setup
