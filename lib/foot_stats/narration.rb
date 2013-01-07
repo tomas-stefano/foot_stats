@@ -4,9 +4,7 @@ module FootStats
 
     def self.all(options={})
       match_id = options.fetch(:match)
-
-      request = Request.new self, :Partida => match_id
-
+      request  = Request.new self, :Partida => match_id
       response = request.parse stream_key: "match-narration-#{match_id}"
 
       return response.error if response.error?

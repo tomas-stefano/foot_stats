@@ -8,7 +8,6 @@ module FootStats
 
     def self.all(options={})
       championship_id = options.fetch(:championship)
-
       request  = Request.new self, :Campeonato => options.fetch(:championship)
       response = request.parse stream_key: "match-championship-#{championship_id}"
 
