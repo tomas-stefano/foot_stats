@@ -20,10 +20,11 @@ Or install it yourself as:
 
 ```ruby
     FootStats::Setup.setup do |config|
-      config.username = "username"
-      config.password = "password"
-      config.logger   = Rails.logger
-      config.base_url = "http://footstats.com"
+      config.username      = "username"
+      config.password      = "password"
+      config.logger        = Rails.logger
+      config.base_url      = "http://footstats.com"
+      config.payload_store = Redis.new
     end
 ```
 
