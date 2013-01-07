@@ -6,12 +6,15 @@ module FootStats
     #
     # @return [Array]
     #
-    def self.all
-      request  = Request.new(self)
-      response = request.parse
+    def self.all(options = {})
+      response = Request.new(self, stream_key: 'championships').parse
 
       return response.error if response.error?
 
+      updated_response response, options
+    end
+
+    def self.parse_response(response)
       response.collect do |championship|
         new(
           :source_id          => championship['@Id'].to_i,
@@ -43,24 +46,24 @@ module FootStats
     #
     # @return [Array]
     #
-    def classification
-      ChampionshipClassification.all(championship: source_id)
+    def classification(options = {})
+      ChampionshipClassification.all(options.merge(championship: source_id))
     end
 
     # Return the Championship teams.
     #
     # @return [Array]
     #
-    def teams
-      Team.all(championship: source_id)
+    def teams(options = {})
+      Team.all(options.merge(championship: source_id))
     end
 
     # Return all the Championship matches.
     #
     # @return [Array]
     #
-    def matches
-      Match.all(championship: source_id)
+    def matches(options = {})
+      Match.all(options.merge(championship: source_id))
     end
   end
 end
