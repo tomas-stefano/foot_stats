@@ -6,20 +6,27 @@ module FootStats
       @key = key
     end
 
+    # Stores latest payload
+    def store(payload)
+      payload_store[@key] = payload
+    end
+
     # Verifies if payload is up-to-date
     #
     # @return [String]
     #
     def updated?(new_payload)
-      new_payload == payload
+      payload != new_payload
+    end
+
+    # Access payload store
+    def payload
+      payload_store[@key]
     end
 
     protected
-
-    # TODO: Needs to implement a decent key-store to persist payloads
-    def payload
-      @@payloads ||= {}
-      @@payloads[@key]
+    def payload_store
+      FootStats::Setup.payload_store
     end
   end
 end

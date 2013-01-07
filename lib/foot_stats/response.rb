@@ -13,6 +13,15 @@ module FootStats
       check_stream
     end
 
+    # Mark response as readed, storing payload at payload store
+    def readed
+      if @stream_key
+        stream.store @payload
+      else
+        true
+      end
+    end
+
     # Return the error response object with the message if had errors.
     #
     # @return [ErrorResponse]
@@ -27,7 +36,7 @@ module FootStats
     #
     def updated?
       if @stream_key
-        Stream.new(@stream_key).updated?(@payload)
+        stream.updated?(@payload)
       else
         true
       end
@@ -67,6 +76,10 @@ module FootStats
     alias :map :collect
 
     private
+    def stream
+      @stream ||= Stream.new(@stream_key)
+    end
+
     def check_stream
       if @stream_key
         @payload = Digest::MD5.hexdigest @body

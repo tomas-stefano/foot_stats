@@ -17,11 +17,13 @@ module FootStats
     cattr_accessor :password
     cattr_accessor :logger
     cattr_accessor :base_url
+    cattr_accessor :payload_store
 
     # @param block [Proc]
     #
     def self.setup
-      yield(self)
+      self.payload_store = Hash.new
+      yield(self) if block_given?
     end
   end
 end
