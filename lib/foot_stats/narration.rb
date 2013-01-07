@@ -3,12 +3,21 @@ module FootStats
     attr_accessor :championship_id, :name, :season, :match_id, :score, :has_penalty, :details
 
     def self.all(options={})
-      request  = Request.new(self, :Partida => options.fetch(:match))
+      match_id = options.fetch(:match)
+
+      request = Request.new(self,
+        :Partida    => match_id,
+        :stream_key => "match-narration-#{match_id}")
+
       response = request.parse
 
       return response.error if response.error?
 
-      response.resource.collect do |match, value|
+      updated_response response, options
+    end
+
+    def self.parse_response(response)
+      response.collect do |match, value|
         match_hash = response['Partida']
         narrations = response['Narracoes'] || []
 

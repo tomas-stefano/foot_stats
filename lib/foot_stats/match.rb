@@ -7,11 +7,20 @@ module FootStats
     attr_accessor :visitor_team, :visitor_team_name, :visitor_score, :visitor_penalties_score
 
     def self.all(options={})
-      request  = Request.new(self, :Campeonato => options.fetch(:championship))
+      championship_id = options.fetch(:championship)
+
+      request = Request.new(self,
+        :Campeonato => options.fetch(:championship),
+        :stream_key => "match-championship-#{championship_id}")
+
       response = request.parse
 
       return response.error if response.error?
 
+      updated_response response, options
+    end
+
+    def self.parse_response(response)
       response['Partida'].collect do |match|
         match_object = Match.new(
           :source_id     => match['@Id'].to_i,
@@ -70,8 +79,8 @@ module FootStats
     #
     # @return [Array]
     #
-    def narrations
-      Narration.all(match: source_id)
+    def narrations(options = {})
+      Narration.all(options.merge(match: source_id))
     end
   end
 end
