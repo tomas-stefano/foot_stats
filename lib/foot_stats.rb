@@ -1,6 +1,10 @@
-require 'foot_stats/version'
-
+require 'singleton'
 require 'digest/md5'
+
+require 'json'
+require 'rest-client'
+
+require 'foot_stats/version'
 
 module FootStats
   autoload :Championship,               'foot_stats/championship'

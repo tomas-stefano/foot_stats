@@ -1,5 +1,3 @@
-require 'rest-client'
-
 module FootStats
   # Class responsible to make the request to the FootStats API
   #
@@ -30,9 +28,9 @@ module FootStats
     # @return [String]
     #
     def post(options)
-      logger.info("POST #{request_url}") if logger.present?
+      log "POST #{request_url}"
       response = RestClient.post(request_url, setup_params.merge(options))
-      logger.info("RESPONSE BODY:\n#{response}\n") if logger.present?
+      log "RESPONSE BODY:\n#{response}"
       response
     end
 
@@ -53,6 +51,11 @@ module FootStats
         :Usuario => Setup.username,
         :Senha   => Setup.password
       }
+    end
+
+    protected
+    def log(message)
+      logger.info(message + "\n") if logger
     end
   end
 end

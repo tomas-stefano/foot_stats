@@ -1,5 +1,3 @@
-require 'active_support/json'
-
 module FootStats
   class Response
     attr_accessor :resource_key, :body, :parsed_response, :payload
@@ -9,7 +7,7 @@ module FootStats
       @resource_key    = options.fetch(:resource_key)
       @body            = options.fetch(:body)
       @stream_key      = options[:stream_key]
-      @parsed_response = ActiveSupport::JSON.decode(json_response)
+      @parsed_response = JSON.parse(json_response)
       check_stream
     end
 
@@ -47,7 +45,7 @@ module FootStats
     # @return [True, False]
     #
     def error?
-      @parsed_response['Erro'].present?
+      @parsed_response['Erro'] != nil
     end
 
     # Return the resource match by the resource key.

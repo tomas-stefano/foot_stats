@@ -1,5 +1,3 @@
-require 'active_support/core_ext/class'
-
 module FootStats
   # Class responsible to handle all the FootStats setup.
   #
@@ -13,17 +11,19 @@ module FootStats
   #    end
   #
   class Setup
-    cattr_accessor :username
-    cattr_accessor :password
-    cattr_accessor :logger
-    cattr_accessor :base_url
-    cattr_accessor :payload_store
+    attr_accessor :username, :password, :logger, :base_url, :payload_store
+
+    include Singleton
 
     # @param block [Proc]
     #
     def self.setup
-      self.payload_store = Hash.new
-      yield(self) if block_given?
+      instance.payload_store = Hash.new
+      yield(instance) if block_given?
+    end
+
+    def self.method_missing(method_name, *args, &block)
+      instance.send method_name, *args, &block
     end
   end
 end
