@@ -16,6 +16,7 @@ module FootStats
   autoload :Request,                    'foot_stats/request'
   autoload :Resource,                   'foot_stats/resource'
   autoload :Response,                   'foot_stats/response'
+  autoload :RoundMatch,                 'foot_stats/round_match'
   autoload :Setup,                      'foot_stats/setup'
   autoload :Stream,                     'foot_stats/stream'
   autoload :Team,                       'foot_stats/team'
