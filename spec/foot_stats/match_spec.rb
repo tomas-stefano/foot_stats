@@ -24,7 +24,7 @@ module FootStats
         its(:cup)           { should eq '9' }
         its(:group)         { should eq '3' }
         its(:game_number)   { should eq '100' }
-        its(:live)          { should eq 'Não' }
+        its(:live?)         { should be_false }
 
         its(:home_team)      { should eq 1077 }
         its(:home_team_name) { should eq 'Caldense' }
