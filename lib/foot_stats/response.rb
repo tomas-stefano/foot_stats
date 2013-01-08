@@ -53,7 +53,11 @@ module FootStats
     # @return [Hash]
     #
     def resource
-      @parsed_response[@resource_key]
+      if @resource_key
+        @parsed_response[@resource_key]
+      else
+        @parsed_response
+      end
     end
 
     # Attempt to fetch a key from resource.
