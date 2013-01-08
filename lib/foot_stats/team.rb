@@ -2,6 +2,14 @@ module FootStats
   class Team < Resource
     attr_accessor :source_id, :full_name, :city, :country
 
+    # Return all possible team players
+    #
+    # @return [Array]
+    #
+    def players(options = {})
+      Player.all(options.merge(team: source_id))
+    end
+
     def self.all(options={})
       championship_id = options.fetch(:championship)
       request  = Request.new self, :IdCampeonato => options.fetch(:championship)

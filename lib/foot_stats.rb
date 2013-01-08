@@ -13,6 +13,7 @@ module FootStats
   autoload :Live,                       'foot_stats/live'
   autoload :Match,                      'foot_stats/match'
   autoload :Narration,                  'foot_stats/narration'
+  autoload :Player,                     'foot_stats/player'
   autoload :Request,                    'foot_stats/request'
   autoload :Resource,                   'foot_stats/resource'
   autoload :Response,                   'foot_stats/response'
