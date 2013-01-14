@@ -54,6 +54,7 @@ module FootStats
       def find(match_id, options={})
         response = Request.new(self, :IdPartida => match_id).parse stream_key: 'championships'
         return response.error if response.error?
+
         updated_response response, options
       end
 

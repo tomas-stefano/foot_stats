@@ -1,6 +1,6 @@
 module FootStats
   class Player < Resource
-    attr_accessor :source_id, :full_name, :nickname
+    attribute_accessor :source_id, :full_name, :nickname
 
     def self.all(options={})
       team_id = options.fetch(:team)
@@ -13,12 +13,26 @@ module FootStats
     end
 
     def self.parse_response(response)
-      response.collect do |player_params|
-        self.new(
-          source_id: player_params['@Id'].to_i,
-          full_name: player_params['@Nome'],
-          nickname:  player_params['@Apelido']
-        )
+      # FootStats sucks!
+      # When there is only one player, resource isn't a collection,
+      # but it's the only player!
+      case response.resource
+      when Hash
+        [self.new(
+          source_id: response.resource['@Id'].to_i,
+          full_name: response.resource['@Nome'],
+          nickname:  response.resource['@Apelido']
+        )]
+      when Array
+        response.collect do |player_params|
+          self.new(
+            source_id: player_params['@Id'].to_i,
+            full_name: player_params['@Nome'],
+            nickname:  player_params['@Apelido']
+          )
+        end
+      else
+        []
       end
     end
 

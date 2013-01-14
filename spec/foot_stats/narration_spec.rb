@@ -45,13 +45,6 @@ module FootStats
           its(:action)           { should eq 'acao' }
         end
       end
-
-      context "error response" do
-        use_vcr_cassette 'match_narration_error_response'
-        subject { Narration.all(match: 19) }
-
-        its(:message) { should eq 'Usuário ou senha Inválidos' }
-      end
     end
 
     describe ".resource_name" do

@@ -1,6 +1,6 @@
 module FootStats
   class Team < Resource
-    attr_accessor :source_id, :full_name, :city, :country
+    attribute_accessor :source_id, :full_name, :city, :country
 
     # Return all possible team players
     #

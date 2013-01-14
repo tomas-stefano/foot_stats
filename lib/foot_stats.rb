@@ -7,6 +7,7 @@ require 'rest-client'
 require 'foot_stats/version'
 
 module FootStats
+  autoload :AttributeAccessor,          'foot_stats/attribute_accessor'
   autoload :Championship,               'foot_stats/championship'
   autoload :ChampionshipClassification, 'foot_stats/championship_classification'
   autoload :ErrorResponse,              'foot_stats/error_response'
