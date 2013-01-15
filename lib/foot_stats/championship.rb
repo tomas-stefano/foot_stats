@@ -1,6 +1,6 @@
 module FootStats
   class Championship < Resource
-    attr_accessor :source_id, :name, :has_classification, :current_round, :total_rounds
+    attribute_accessor :source_id, :name, :has_classification, :current_round, :total_rounds
 
     # Retrieve all championships from FootStats
     #
