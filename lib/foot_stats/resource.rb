@@ -1,5 +1,6 @@
 module FootStats
   class Resource
+    include AttributeAccessor
 
     # Waiting for ActiveModel::Model. =p
     #

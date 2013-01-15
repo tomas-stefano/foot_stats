@@ -7,7 +7,7 @@ module FootStats
       @resource_key    = options.fetch(:resource_key)
       @body            = options.fetch(:body)
       @stream_key      = options[:stream_key]
-      @parsed_response = JSON.parse(json_response)
+      parse_response
       check_stream
     end
 
@@ -73,7 +73,11 @@ module FootStats
     # @return [Array]
     #
     def collect
-      resource.collect { |resource_value| yield(resource_value) }
+      if resource
+        resource.collect { |resource_value| yield(resource_value) }
+      else
+        []
+      end
     end
     alias :map :collect
 
@@ -90,8 +94,17 @@ module FootStats
       end
     end
 
+    def parse_response
+      if json_response
+        @parsed_response = JSON.parse(json_response)
+      else
+        @parsed_response = {}
+      end
+    end
+
     def json_response
-      @body.scan(REGEX_PARSER).first
+      # Sometimes, content of body isn't a JSON, but a string with content "null"
+      @body.scan(REGEX_PARSER).first || nil
     end
   end
 end

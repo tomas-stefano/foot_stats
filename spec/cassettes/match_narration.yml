@@ -64,17 +64,19 @@ http_interactions:
                   "@Placar":" - ",
                   "@TemDisputaPenaltis":"Nao"
               },
-              "Narracoes": [{
-                "@Id": "109",
-                "IdEquipe": "18",
-                "NomeEquipe": "Santos",
-                "IdJogador": "11",
-                "NomeJogador": "Neymar",
-                "Periodo": "1",
-                "Momento": "23",
-                "Descricao": "Impedimento",
-                "Acao": "acao"
-              }]
+              "Narracoes": {
+                "Narracao": [{
+                  "@Id": "109",
+                  "IdEquipe": "18",
+                  "NomeEquipe": "Santos",
+                  "IdJogador": "11",
+                  "NomeJogador": "Neymar",
+                  "Periodo": "1",
+                  "Momento": "23",
+                  "Descricao": "Impedimento",
+                  "Acao": "acao"
+                }]
+              }
            }}
         </string>
     http_version: !binary |-
