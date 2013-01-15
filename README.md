@@ -61,7 +61,6 @@ Or install it yourself as:
 
 ## Next
 
-* LIVE 'feed'.
 * Create a Fake App (Sandbox), that simulates FootStats API.
 
 ## Contributing

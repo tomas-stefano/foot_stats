@@ -78,5 +78,33 @@ module FootStats
     def narrations(options = {})
       Narration.all(options.merge(match: source_id))
     end
+
+    # Return live date of a match
+    #
+    # @return [Live]
+    #
+    def live(options = {})
+      Live.find source_id, options
+    end
+
+    # Live setter
+    #
+    # @return [boolean]
+    #
+    def live=(value)
+      if value == 'Sim' || value == true
+        @has_live = true
+      else
+        @has_live = false
+      end
+    end
+
+    # Checks if match has live coverage
+    #
+    # @return [boolean]
+    #
+    def live?
+      @has_live
+    end
   end
 end
