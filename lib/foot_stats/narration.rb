@@ -9,7 +9,7 @@ module FootStats
     def self.find(options={})
       match_id = options.fetch(:match)
       request  = Request.new self, :Partida => match_id
-      response = request.parse stream_key: "match-narration-#{match_id}"
+      response = request.parse stream_key: "match_narration-#{match_id}"
 
       return response.error if response.error?
 
