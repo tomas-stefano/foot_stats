@@ -18,6 +18,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency 'json'
+  gem.add_dependency 'redis'
+  gem.add_dependency 'redis-namespace'
   gem.add_dependency 'rest-client'
 
   gem.add_development_dependency 'vcr'

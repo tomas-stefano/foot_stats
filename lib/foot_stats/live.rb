@@ -52,7 +52,7 @@ module FootStats
       # @return [Live]
       #
       def find(match_id, options={})
-        response = Request.new(self, :IdPartida => match_id).parse stream_key: 'championships'
+        response = Request.new(self, :IdPartida => match_id).parse stream_key: 'live_match'
         return response.error if response.error?
 
         updated_response response, options
