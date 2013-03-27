@@ -35,6 +35,8 @@ module FootStats
         its(:visitor_team_name) { should eq 'Tupi' }
         its(:visitor_score)     { should eq ' ' }
         its(:visitor_penalties_score) { should eq '' }
+
+        its(:description) { should eq 'Caldense X Tupi' }
       end
 
       context "error response" do

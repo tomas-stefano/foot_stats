@@ -3,7 +3,7 @@ module FootStats
     attribute_accessor :source_id, :date, :status, :referee, :stadium, :city, :state
     attribute_accessor :country, :has_statistic, :has_narration, :round, :phase
     attribute_accessor :cup, :group, :game_number, :live
-    attribute_accessor :home_team, :home_team_name, :home_score, :home_penalties_score
+    attribute_accessor :home_team,    :home_team_name,    :home_score,    :home_penalties_score
     attribute_accessor :visitor_team, :visitor_team_name, :visitor_score, :visitor_penalties_score
 
     def self.all(options={})
@@ -105,6 +105,14 @@ module FootStats
     #
     def live?
       @has_live
+    end
+
+    # Home team name and visitor team name
+    #
+    # @return [String]
+    #
+    def description
+      "#{home_team_name} X #{visitor_team_name}"
     end
   end
 end
