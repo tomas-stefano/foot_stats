@@ -1,9 +1,9 @@
 module FootStats
   class Narration < Resource
-    attr_accessor :championship_id, :name, :season, :match_id, :score, :has_penalty, :details
+    attr_accessor :championship_id, :name, :season, :match_id, :score, :has_penalty, :details, :response
 
     def self.all(options={})
-      [ self.find(options) ]
+      [self.find(options)]
     end
 
     def self.find(options={})

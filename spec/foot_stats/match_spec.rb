@@ -6,8 +6,10 @@ module FootStats
     describe ".all" do
       context "normal response" do
         use_vcr_cassette 'championship_match'
+        let(:matches) { Match.all(championship: 198) }
+        subject { matches.first }
 
-        subject { Match.all(championship: 198).first }
+        it { matches.response.should include %{{"@Id":"1077","@Nome":"Caldense","@Placar":" ","@PlacarPenaltis":"","@Tipo":"Mandante"}} }
 
         its(:source_id)     { should eq 34829 }
         its(:date)          { should eq '1/29/2012 4:00:00 PM' }

@@ -1,5 +1,7 @@
 module FootStats
   class Live < Resource
+    attr_accessor :response
+
     autoload :Card,   'foot_stats/live_card'
     autoload :Goal,   'foot_stats/live_goal'
     autoload :Player, 'foot_stats/live_player'
@@ -114,7 +116,6 @@ module FootStats
       end
       alias :parse_home_team    :parse_team
       alias :parse_visitor_team :parse_team
-
     end
   end
 end

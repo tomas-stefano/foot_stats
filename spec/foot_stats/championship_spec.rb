@@ -6,8 +6,10 @@ module FootStats
     describe '.all' do
       context "normal response" do
         use_vcr_cassette 'championship'
-        subject { Championship.all.first }
+        let(:championships) { Championship.all }
+        subject { championships.first }
 
+        it { championships.response.should include %{{ "Campeonato": [ { "@Id": "172", "@Nome": "Camp. Paulista 2012", "@TemClassificacao": "True", "@RodadaATual": "1", "@Rodadas": "18" } ] }} }
         its(:source_id)   { should be 172 }
         its(:name) { should eq 'Camp. Paulista 2012' }
         its(:has_classification) { should be true }

@@ -15,7 +15,7 @@ module FootStats
     # @return [Array]
     #
     def self.updated_response(response, options)
-      if options[:updated]
+      parsed_response = if options[:updated]
         if response.updated?
           response.readed
           parse_response response
@@ -23,7 +23,14 @@ module FootStats
           []
         end
       else
-        parse_response response
+        parse_response(response)
+      end
+
+      if parsed_response.is_a?(Array)
+        CollectionResource.new(parsed_response, response)
+      else
+        parsed_response.response = response.body
+        parsed_response
       end
     end
 
@@ -49,6 +56,16 @@ module FootStats
     #
     def self.resource_key
       raise NotImplementedError, "need to implement .resource_key in #{self}."
+    end
+  end
+
+  class CollectionResource < Array
+    attr_reader :response
+
+    def initialize(parsed_response, response)
+      @response = response.body
+
+      super(parsed_response)
     end
   end
 end

@@ -23,6 +23,7 @@ module FootStats
         its(:phase)         { should == 'Primeira Fase'         }
         its(:cup)           { should == ''                      }
         its(:group)         { should == ''                      }
+        its(:response)      { should include %{"@IdPartida": "25563"} }
 
         it 'should have 11 initial players per team' do
           subject.home_team.initial_players.count.should    == 11

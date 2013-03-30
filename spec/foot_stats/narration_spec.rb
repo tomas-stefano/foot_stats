@@ -31,6 +31,8 @@ module FootStats
         its(:score)        { should eq ' - ' }
         its(:has_penalty)  { should eq 'Nao' }
 
+        it { narrations.response.should include %{"Narracoes"} }
+
         context "narrations" do
           subject { narrations.details.first }
 
