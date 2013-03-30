@@ -41,7 +41,7 @@ Or install it yourself as:
 
      # Championship Classification
      #
-     championship.classification 
+     championship.classification
 
      # Championship Teams
      #
@@ -57,6 +57,12 @@ Or install it yourself as:
      # Narrations
      #
      match.narrations
+
+     # Live Feed
+     match.live
+
+     # OR
+     live = FootStats::Live.find(match.source_id)
 ```
 
 ## Next
