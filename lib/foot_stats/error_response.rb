@@ -31,5 +31,15 @@ module FootStats
     def each(&block)
       []
     end
+
+    # <b>Respect the contract with the Resource Instance and Resource Collections.</b>
+    # This method is useful when you want to store the response in your database or
+    # log this in your own way.
+    #
+    # <b>I prefer to explicit this and explain, instead use the alias keyword in Ruby.</b>
+    #
+    def response
+      message
+    end
   end
 end
