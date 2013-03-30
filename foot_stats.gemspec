@@ -22,7 +22,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'redis-namespace'
   gem.add_dependency 'rest-client'
 
-  gem.add_development_dependency 'vcr'
+  gem.add_development_dependency 'vcr', '~> 2.4.0'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'fakeweb'
