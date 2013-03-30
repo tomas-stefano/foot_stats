@@ -32,6 +32,11 @@ module FootStats
       response = RestClient.post(request_url, setup_params.merge(options))
       log "RESPONSE BODY:\n#{response}"
       response
+    rescue Exception => exception
+      %{<string xmlns="http://tempuri.org/">
+          {"Erro": {"@Mensagem": "#{exception.message}"}}
+        </string>
+      }
     end
 
     # Parse the "XML"/ "JSON".

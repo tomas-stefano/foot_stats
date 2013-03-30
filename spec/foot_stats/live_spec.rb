@@ -44,6 +44,14 @@ module FootStats
           subject.visitor_team.cards.count.should == 2
         end
       end
+
+      context 'internal server error response' do
+        use_vcr_cassette 'internal_server_error'
+        subject { Live.find 255639012901019 }
+
+        it { should be_a ErrorResponse }
+        its(:message) { should eq '500 Internal Server Error' }
+      end
     end
 
     describe ".resource_name" do

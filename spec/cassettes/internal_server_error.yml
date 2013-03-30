@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://footstats.com.br/modyo.asmx/AoVivo
+    body:
+      encoding: US-ASCII
+      string: Usuario=&Senha=&IdPartida=255639012901019
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      content-length:
+      - '41'
+      content-type:
+      - application/x-www-form-urlencoded
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      cache-control:
+      - private
+      content-type:
+      - text/plain; charset=utf-8
+      server:
+      - Microsoft-IIS/7.5
+      x-aspnet-version:
+      - 2.0.50727
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sat, 30 Mar 2013 17:22:32 GMT
+      content-length:
+      - '915'
+    body:
+      encoding: US-ASCII
+      string: ! "System.ArgumentException: Cannot convert 255639012901019 to System.Int32.\r\nParameter
+        name: type ---> System.OverflowException: Value was either too large or too
+        small for an Int32.\r\n   at System.Number.ParseInt32(String s, NumberStyles
+        style, NumberFormatInfo info)\r\n   at System.String.System.IConvertible.ToInt32(IFormatProvider
+        provider)\r\n   at System.Convert.ChangeType(Object value, Type conversionType,
+        IFormatProvider provider)\r\n   at System.Web.Services.Protocols.ScalarFormatter.FromString(String
+        value, Type type)\r\n   --- End of inner exception stack trace ---\r\n   at
+        System.Web.Services.Protocols.ScalarFormatter.FromString(String value, Type
+        type)\r\n   at System.Web.Services.Protocols.ValueCollectionParameterReader.Read(NameValueCollection
+        collection)\r\n   at System.Web.Services.Protocols.HttpServerProtocol.ReadParameters()\r\n
+        \  at System.Web.Services.Protocols.WebServiceHandler.CoreProcessRequest()\r\n"
+    http_version: '1.1'
+  recorded_at: Sat, 30 Mar 2013 17:22:32 GMT
+recorded_with: VCR 2.4.0
