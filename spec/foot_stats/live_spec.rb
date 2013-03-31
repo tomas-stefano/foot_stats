@@ -44,6 +44,10 @@ module FootStats
           subject.home_team.cards.count.should    == 1
           subject.visitor_team.cards.count.should == 2
         end
+
+        it 'should return all goals from visitor team and home team' do
+          subject.goals.should eq [subject.home_team.goals.first]
+        end
       end
 
       context 'internal server error response' do

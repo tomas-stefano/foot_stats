@@ -46,6 +46,10 @@ module FootStats
       penalty_score[:visitor]
     end
 
+    def goals
+      [home_team.goals, visitor_team.goals].flatten
+    end
+
     alias :narration? :has_narration
 
     class << self
