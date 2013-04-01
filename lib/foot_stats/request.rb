@@ -33,7 +33,8 @@ module FootStats
       log "RESPONSE BODY:\n#{response}"
       response
     rescue Exception => exception
-      response = %{<string xmlns="http://tempuri.org/">
+      response = %{
+        <string xmlns="http://tempuri.org/">
           {"Erro": {"@Mensagem": "#{exception.message}"}}
         </string>
       }

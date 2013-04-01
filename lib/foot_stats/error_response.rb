@@ -31,6 +31,10 @@ module FootStats
     def each(&block)
       []
     end
+    # This methods should return an empty collection for DSL purpose when Live returns Error.
+    alias :players :each
+    alias :goals :each
+    alias :cards :each
 
     # <b>Respect the contract with the Resource Instance and Resource Collections.</b>
     # This method is useful when you want to store the response in your database or

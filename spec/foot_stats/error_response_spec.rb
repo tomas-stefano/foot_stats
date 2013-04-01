@@ -23,5 +23,23 @@ module FootStats
         subject.each { fail }.should eq []
       end
     end
+
+    describe '#goals' do
+      subject { error_response.goals }
+
+      it { should eq [] }
+    end
+
+    describe '#cards' do
+      subject { error_response.cards }
+
+      it { should eq [] }
+    end
+
+    describe '#players' do
+      subject { error_response.players }
+
+      it { should eq [] }
+    end
   end
 end
