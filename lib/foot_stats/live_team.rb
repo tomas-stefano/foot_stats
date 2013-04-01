@@ -2,16 +2,17 @@ module FootStats
   class Live < Resource
     class Team
       attr_reader :coach, :full_name, :source_id, :name
-      attr_reader :cards, :players, :goals
+      attr_reader :cards, :players, :goals, :payload
 
-      def initialize(params)
+      def initialize(params, payload)
         @coach     = params['@Tecnico']
         @full_name = params['@Nome']
         @source_id = params['@Id']
+        @payload   = payload
 
-        parse_cards   params['Cartoes']
-        parse_goals   params['Gols']
-        parse_players params['Escalacao']
+        parse_cards(params['Cartoes'])
+        parse_goals(params['Gols'])
+        parse_players(params['Escalacao'])
       end
 
       def initial_players

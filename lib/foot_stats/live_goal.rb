@@ -18,6 +18,10 @@ module FootStats
       def team_source_id
         @team.source_id
       end
+
+      def player_source_id
+        @team.players.find { |player| player.name == player_name }.source_id
+      end
     end
   end
 end

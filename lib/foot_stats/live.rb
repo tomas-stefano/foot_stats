@@ -87,7 +87,7 @@ module FootStats
         MAPPED_PARAMS.each do |key, foot_stats_key|
           setter_method = :"parse_#{key}"
           if respond_to? setter_method
-            live_params[key] = send setter_method, response[foot_stats_key]
+            live_params[key] = send(setter_method, response[foot_stats_key], response)
           else
             live_params[key] = response[foot_stats_key]
           end
@@ -96,13 +96,13 @@ module FootStats
         self.new live_params
       end
 
-      def parse_int(value)
+      def parse_int(value, payload)
         value.to_i
       end
       alias :parse_source_id :parse_int
       alias :parse_round     :parse_int
 
-      def parse_score(score)
+      def parse_score(score, payload)
         home_score, visitor_score = score.split '-'
         {
           home:    (home_score || 0).to_i,
@@ -111,12 +111,12 @@ module FootStats
       end
       alias :parse_penalty_score :parse_score
 
-      def parse_has_narration(narration)
+      def parse_has_narration(narration, payload)
         narration == 'Sim'
       end
 
-      def parse_team(team_params)
-        Team.new team_params
+      def parse_team(team_params, payload)
+        Team.new(team_params, payload)
       end
       alias :parse_home_team    :parse_team
       alias :parse_visitor_team :parse_team

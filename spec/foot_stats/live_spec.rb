@@ -51,6 +51,7 @@ module FootStats
           goal.minute.should be 8
           goal.period.should eq 'Segundo tempo'
           goal.player_name.should eq 'Karim Benzema'
+          goal.player_source_id.should be 17158
           goal.team_name.should eq 'França'
           goal.team_source_id.should eq '1105'
         end
