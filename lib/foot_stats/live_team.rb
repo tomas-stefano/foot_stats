@@ -1,7 +1,7 @@
 module FootStats
   class Live < Resource
     class Team
-      attr_reader :coach, :full_name, :source_id
+      attr_reader :coach, :full_name, :source_id, :name
       attr_reader :cards, :players, :goals
 
       def initialize(params)
@@ -35,7 +35,7 @@ module FootStats
 
       def parse_goals(goals)
         @goals = fix_collection(goals, 'Gol').map do |goal_params|
-          Goal.new goal_params
+          Goal.new(goal_params, self)
         end
       end
 

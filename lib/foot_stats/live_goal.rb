@@ -3,11 +3,20 @@ module FootStats
     class Goal
       attr_reader :player_name, :period, :minute, :type
 
-      def initialize(params)
+      def initialize(params, team)
         @player_name = params['@Jogador']
         @period      = params['@Periodo']
         @minute      = params['@Minuto'].to_i
         @type        = params['@Tipo']
+        @team        = team
+      end
+
+      def team_name
+        @team.full_name
+      end
+
+      def team_source_id
+        @team.source_id
       end
     end
   end

@@ -47,6 +47,12 @@ module FootStats
 
         it 'should return all goals from visitor team and home team' do
           subject.goals.should eq [subject.home_team.goals.first]
+          goal = subject.home_team.goals.first
+          goal.minute.should be 8
+          goal.period.should eq 'Segundo tempo'
+          goal.player_name.should eq 'Karim Benzema'
+          goal.team_name.should eq 'França'
+          goal.team_source_id.should eq '1105'
         end
       end
 
