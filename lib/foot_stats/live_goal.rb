@@ -11,6 +11,10 @@ module FootStats
         @team        = team
       end
 
+      def ==(goal)
+        minute == goal.minute and period == goal.period and player_name == goal.player_name and type == goal.type
+      end
+
       def team_name
         @team.full_name
       end
