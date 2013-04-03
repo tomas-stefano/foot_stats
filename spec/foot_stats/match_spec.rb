@@ -12,7 +12,7 @@ module FootStats
         it { matches.response.should include %{{"@Id":"1077","@Nome":"Caldense","@Placar":" ","@PlacarPenaltis":"","@Tipo":"Mandante"}} }
 
         its(:source_id)     { should eq 34829 }
-        its(:date)          { should eq '1/29/2012 4:00:00 PM' }
+        its(:date)          { should eq '29/1/2012 4:00:00 PM' }
         its(:status)        { should eq 'Partida não iniciada' }
         its(:referee)       { should eq '0' }
         its(:stadium)       { should eq 'Ronaldo Junqueira' }

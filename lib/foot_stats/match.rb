@@ -99,6 +99,14 @@ module FootStats
       end
     end
 
+    # Date setter that changes the date format from footstats
+    #
+    # @return [String]
+    #
+    def date=(footstats_date)
+      @date = footstats_date.gsub(/(?<month>\d{1,2})\/(?<day>\d{1,2})/, '\k<day>/\k<month>')
+    end
+
     # Checks if match has live coverage
     #
     # @return [boolean]
