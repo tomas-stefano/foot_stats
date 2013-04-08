@@ -53,12 +53,27 @@ module FootStats
     alias :narration? :has_narration
 
     class << self
-      # Retrieve live data of a match
+      # Retrieve live data of a match.
+      #
+      # <b>If you want simulate just pass the response instance in :response options.</b>
+      #
+      # @example
+      #
+      #     FootStats::Live.find(25563)
+      #     # => #<Live:128909190198>
+      #
+      #     # Simulate the request
+      #     FootStats::Live.find(25563, response: Response.new({ body: '...' }))
+      #     # => #<Live:128909171653>
+      #
+      # @argument <Integer>
+      # @argument options <Hash>
+      # @option response <FootStats::Response> Simulate an Response
       #
       # @return [Live]
       #
       def find(match_id, options={})
-        response = Request.new(self, :IdPartida => match_id).parse stream_key: 'live_match'
+        response = options[:response] || Request.new(self, :IdPartida => match_id).parse(stream_key: 'live_match')
         return response.error if response.error?
 
         updated_response response, options

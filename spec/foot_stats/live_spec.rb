@@ -18,7 +18,7 @@ module FootStats
         its(:stadium)       { should == 'Stade de France'       }
         its(:city)          { should == 'Paris'                 }
         its(:country)       { should == 'França'                }
-        its(:narration?)    { should be_true                    }
+        its(:narration?)    { should be true                    }
         its(:round)         { should == 1                       }
         its(:phase)         { should == 'Primeira Fase'         }
         its(:cup)           { should == ''                      }
@@ -63,6 +63,16 @@ module FootStats
 
         it { should be_a ErrorResponse }
         its(:message) { should eq '500 Internal Server Error' }
+      end
+
+      context 'simulate response' do
+        subject { Live.find(25563, response: Response.new({ body: %{
+          <string xmlns="http://tempuri.org/">
+            {"Erro": {"@Mensagem": "Usuário ou senha Inválidos"}}
+          </string>
+        } })) }
+
+        it { should be_a ErrorResponse }
       end
     end
 

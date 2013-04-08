@@ -4,7 +4,7 @@ module FootStats
     REGEX_PARSER = /\{.*}/m
 
     def initialize(options={})
-      @resource_key    = options.fetch(:resource_key)
+      @resource_key    = options[:resource_key]
       @body            = options.fetch(:body)
       @stream_key      = options[:stream_key]
       parse_response
