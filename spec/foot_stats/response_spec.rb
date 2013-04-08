@@ -41,7 +41,11 @@ module FootStats
       context 'when is true' do
         subject { error_response }
 
-        its(:error) { should eq(ErrorResponse.new('Usuário ou senha Inválidos')) }
+        its(:error) { should eq(ErrorResponse.new(%{
+          <string xmlns="http://tempuri.org/">
+            {"Erro": {"@Mensagem": "Usuário ou senha Inválidos"}}
+          </string>
+        }, 'Usuário ou senha Inválidos')) }
       end
 
       context 'when is false' do

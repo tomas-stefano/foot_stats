@@ -3,8 +3,15 @@ module FootStats
     include Enumerable
     attr_reader :message
 
-    def initialize(message)
-      @message = message
+    # <b>Respect the contract with the Resource Instance and Resource Collections.</b>
+    # This method is useful when you want to store the response in your database or
+    # log this in your own way.
+    #
+    attr_reader :response
+
+    def initialize(response, message)
+      @response = response
+      @message  = message
     end
 
     # Compare to other Error response getting the exactly same message.
@@ -35,15 +42,5 @@ module FootStats
     alias :players :each
     alias :goals :each
     alias :cards :each
-
-    # <b>Respect the contract with the Resource Instance and Resource Collections.</b>
-    # This method is useful when you want to store the response in your database or
-    # log this in your own way.
-    #
-    # <b>I prefer to explicit this and explain, instead use the alias keyword in Ruby.</b>
-    #
-    def response
-      message
-    end
   end
 end

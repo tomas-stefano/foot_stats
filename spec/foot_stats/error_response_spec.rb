@@ -1,8 +1,13 @@
+# encoding: utf-8
 require 'spec_helper'
 
 module FootStats
   describe ErrorResponse do
-    let(:error_response) { ErrorResponse.new('500 Internal Server Error') }
+    let(:error_response) { ErrorResponse.new(%{
+      <string xmlns="http://tempuri.org/">
+        {"Erro": {"@Mensagem": "Usuário ou senha Inválidos"}}
+      </string>
+    }, '500 Internal Server Error') }
 
     describe '#message' do
       subject { error_response.message }
@@ -13,7 +18,7 @@ module FootStats
     describe '#response' do
       subject { error_response.response }
 
-      it { should eq '500 Internal Server Error' }
+      it { should include(%{{"Erro": {"@Mensagem": "Usuário ou senha Inválidos"}}}) }
     end
 
     describe '#each' do

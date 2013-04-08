@@ -25,7 +25,7 @@ module FootStats
     # @return [ErrorResponse]
     #
     def error
-      ErrorResponse.new(@parsed_response['Erro']['@Mensagem']) if error?
+      ErrorResponse.new(@body, @parsed_response['Erro']['@Mensagem']) if error?
     end
 
     # Verifies if response is up-to-date
