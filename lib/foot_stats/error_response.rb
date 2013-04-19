@@ -38,9 +38,10 @@ module FootStats
     def each(&block)
       []
     end
-    # This methods should return an empty collection for DSL purpose when Live returns Error.
+    # This methods should return an empty collection for DSL purpose when Live, Narration returns Error.
     alias :players :each
     alias :goals :each
     alias :cards :each
+    alias :details :each
   end
 end

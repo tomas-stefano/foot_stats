@@ -46,5 +46,11 @@ module FootStats
 
       it { should eq [] }
     end
+
+    describe '#details' do
+      subject { error_response.details }
+
+      it { should eq [] }
+    end
   end
 end
