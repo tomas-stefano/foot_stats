@@ -12,7 +12,7 @@ module FootStats
       end
 
       def ==(goal)
-        minute == goal.minute and period == goal.period and player_name == goal.player_name and type == goal.type
+        minute == goal.minute and period == goal.period and player_source_id.to_s == goal.player_source_id.to_s and type == goal.type
       end
 
       def team_name
