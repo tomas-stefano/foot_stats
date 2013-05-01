@@ -115,6 +115,14 @@ module FootStats
       @has_live
     end
 
+    # Checks if match has narration
+    #
+    # @return [boolean]
+    #
+    def narration?
+      has_narration == 'Sim'
+    end
+
     # Home team name and visitor team name
     #
     # @return [String]
