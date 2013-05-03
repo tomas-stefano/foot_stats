@@ -22,7 +22,7 @@ module FootStats
     #
     # @argument <Integer>
     # @argument options <Hash>
-    # @options match_id <String> the source id from a match in Footstats.
+    # @options match <String> the source id from a match in Footstats.
     # @option response <FootStats::Response> Simulate an Response
     #
     # @return [Narration]
