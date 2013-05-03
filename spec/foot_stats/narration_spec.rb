@@ -47,6 +47,16 @@ module FootStats
           its(:action)           { should eq 'acao' }
         end
       end
+
+      context 'simulate response' do
+        subject { Narration.find(match: 25563, response: Response.new({ body: %{
+          <string xmlns="http://tempuri.org/">
+            {"Erro": {"@Mensagem": "Usuário ou senha Inválidos"}}
+          </string>
+        } })) }
+
+        it { should be_a ErrorResponse }
+      end
     end
 
     describe ".resource_name" do

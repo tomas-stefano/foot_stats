@@ -6,10 +6,30 @@ module FootStats
       [self.find(options)]
     end
 
+    # Retrieve narration data of a match.
+    #
+    # <b>If you want simulate just pass the response instance in :response options.</b>
+    #
+    # @example
+    #
+    #     FootStats::Narration.find(match: 25563)
+    #     # => #<Narration:128909190198>
+    #
+    #     # Simulate the request
+    #     #
+    #     FootStats::Narration.find(match: 25563, response: Response.new({ body: '...' }))
+    #     # => #<Narration:128909171653>
+    #
+    # @argument <Integer>
+    # @argument options <Hash>
+    # @options match_id <String> the source id from a match in Footstats.
+    # @option response <FootStats::Response> Simulate an Response
+    #
+    # @return [Narration]
+    #
     def self.find(options={})
       match_id = options.fetch(:match)
-      request  = Request.new self, :Partida => match_id
-      response = request.parse stream_key: "match_narration-#{match_id}"
+      response = options[:response] || Request.new(self, :Partida => match_id).parse(stream_key: "match_narration-#{match_id}")
 
       return response.error if response.error?
 
