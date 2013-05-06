@@ -27,12 +27,16 @@ module FootStats
 
         it 'should have 11 initial players per team' do
           subject.home_team.initial_players.count.should    == 11
+          subject.home_team.initial_players.should be_a(FootStats::Lineup)
           subject.visitor_team.initial_players.count.should == 11
+          subject.visitor_team.initial_players.should be_a(FootStats::Lineup)
         end
 
         it 'should have 4 substituted players per team' do
           subject.home_team.substituted_players.count.should    == 4
+          subject.home_team.substituted_players.should be_a(FootStats::Lineup)
           subject.visitor_team.substituted_players.count.should == 4
+          subject.visitor_team.substituted_players.should be_a(FootStats::Lineup)
         end
 
         it 'should have correct goals count per team' do

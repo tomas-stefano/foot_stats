@@ -16,11 +16,11 @@ module FootStats
       end
 
       def initial_players
-        players.find_all{ |player| !player.substituted? }
+        FootStats::Lineup.new(players.find_all { |player| !player.substituted? })
       end
 
       def substituted_players
-        players.find_all{ |player| player.substituted? }
+        FootStats::Lineup.new(players.find_all{ |player| player.substituted? })
       end
 
       protected
@@ -50,6 +50,8 @@ module FootStats
         @players = fix_collection(players, 'Jogador').map do |player_params|
           Player.new player_params
         end
+
+        # @players = Lineup.new(players)
       end
     end
   end

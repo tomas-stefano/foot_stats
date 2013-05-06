@@ -17,7 +17,8 @@ module FootStats
     #
     #     # Simulate the request
     #     #
-    #     FootStats::Narration.find(match: 25563, response: Response.new({ body: '...' }))
+    #     response = FootStats::Response.new(resource_key: FootStats::Narration.resource_key, body: '...')
+    #     FootStats::Narration.find(match: 25563, response: response)
     #     # => #<Narration:128909171653>
     #
     # @argument <Integer>
