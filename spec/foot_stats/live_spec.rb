@@ -39,6 +39,11 @@ module FootStats
           subject.visitor_team.substituted_players.should be_a(FootStats::Lineup)
         end
 
+        it 'should have players for the team' do
+          subject.home_team.players.should be_a(FootStats::Lineup)
+          subject.visitor_team.players.should be_a(FootStats::Lineup)
+        end
+
         it 'should have correct goals count per team' do
           subject.home_team.goals.count.should    == subject.home_score
           subject.visitor_team.goals.count.should == subject.visitor_score

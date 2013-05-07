@@ -47,11 +47,11 @@ module FootStats
       end
 
       def parse_players(players)
-        @players = fix_collection(players, 'Jogador').map do |player_params|
+        players = fix_collection(players, 'Jogador').map do |player_params|
           Player.new player_params
         end
 
-        # @players = Lineup.new(players)
+        @players = FootStats::Lineup.new(players)
       end
     end
   end
