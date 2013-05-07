@@ -3,7 +3,7 @@ require 'spec_helper'
 module FootStats
   describe Lineup do
     describe '#==' do
-      let(:fred)  { mock('Player', source_id: '1234', name: 'Fred') }
+      let(:fred)  { mock('Player', source_id: 1234, name: 'Fred') }
       let(:oscar) { mock('Player', source_id: '12345', name: 'Oscar') }
       let(:lineup) { Lineup.new([fred]) }
 
