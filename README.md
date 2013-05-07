@@ -63,11 +63,29 @@ Or install it yourself as:
 
      # OR
      live = FootStats::Live.find(match.source_id)
+
+     # Getting the FootStats Response for all feeds.
+     #
+     live.response
+
+     match.response
+
+     championship.response
 ```
 
-## Next
+## Simulating responses
 
-* Create a Fake App (Sandbox), that simulates FootStats API.
+With this gem you can simulate responses if you had some footstats responses stored in somewhere:
+
+```ruby
+
+     # Live Feed
+     FootStats::Live.find(25563, response: Response.new({ body: '....' }))
+
+     # Narrations Feed
+     response = FootStats::Response.new(resource_key: FootStats::Narration.resource_key, body: '...')
+     FootStats::Narration.find(match: 25563, response: response)
+```
 
 ## Contributing
 
