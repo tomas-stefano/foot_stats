@@ -80,7 +80,7 @@ With this gem you can simulate responses if you had some footstats responses sto
 ```ruby
 
      # Live Feed
-     FootStats::Live.find(25563, response: Response.new({ body: '....' }))
+     FootStats::Live.find(25563, response: FootStats::Response.new({ body: '....' }))
 
      # Narrations Feed
      response = FootStats::Response.new(resource_key: FootStats::Narration.resource_key, body: '...')
