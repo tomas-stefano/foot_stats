@@ -14,7 +14,9 @@ module FootStats
         @substituted = params["@Substituto"] if @was_substituted
       end
 
-      alias :substituted? :was_substituted
+      def substituted?
+        status != 'Titular'
+      end
 
       def self.diff(players, old_players_ids)
         new_players_ids = players.map &:source_id
