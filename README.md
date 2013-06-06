@@ -67,6 +67,10 @@ Or install it yourself as:
      # Goals
      live.goals
 
+     # Scores
+     live.home_score
+     live.visitor_score
+
      # Getting the FootStats Response for all feeds.
      #
      live.response
