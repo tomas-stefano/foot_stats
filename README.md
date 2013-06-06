@@ -64,6 +64,9 @@ Or install it yourself as:
      # OR
      live = FootStats::Live.find(match.source_id)
 
+     # Goals
+     live.goals
+
      # Getting the FootStats Response for all feeds.
      #
      live.response
