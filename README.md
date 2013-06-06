@@ -71,6 +71,10 @@ Or install it yourself as:
      live.home_score
      live.visitor_score
 
+     # Teams
+     live.home_team
+     live.visitor_team
+
      # Getting the FootStats Response for all feeds.
      #
      live.response
