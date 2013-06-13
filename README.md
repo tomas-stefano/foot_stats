@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tomas-stefano/foot_stats.png?branch=master)](https://travis-ci.org/tomas-stefano/foot_stats)
 # FootStats
 
 FootStats API Client in Ruby.
