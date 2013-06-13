@@ -86,6 +86,10 @@ live.visitor_team
 live.home_team.players
 live.visitor_team.players
 
+# Initial Players
+live.home_team.initial_players
+live.visitor_team.initial_players
+
 # Getting the FootStats Response for all feeds.
 #
 live.response
