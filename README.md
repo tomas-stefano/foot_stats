@@ -6,82 +6,88 @@ FootStats API Client in Ruby.
 
 Add this line to your application's Gemfile:
 
-    gem 'foot_stats'
+```ruby
+gem 'foot_stats'
+```
 
 And then execute:
 
-    $ bundle
+```console
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install foot_stats
+```console
+gem install foot_stats
+```
 
 ## Setup
 
 ```ruby
-    FootStats::Setup.setup do |config|
-      config.username      = "username"
-      config.password      = "password"
-      config.logger        = Rails.logger
-      config.base_url      = "http://footstats.com"
-      config.payload_store = Redis.new
-    end
+FootStats::Setup.setup do |config|
+  config.username      = "username"
+  config.password      = "password"
+  config.logger        = Rails.logger
+  config.base_url      = "http://footstats.com"
+  config.payload_store = Redis.new
+end
 ```
 
 ## Usage
 
 ```ruby
-     # Championship
-     #
-     championships = FootStats::Championship.all
+# Championship
+#
+championships = FootStats::Championship.all
 
-     # Championship
-     #
-     championship = championships.first
+# Championship
+#
+championship = championships.first
 
-     # Championship Classification
-     #
-     championship.classification
+# Championship Classification
+#
+championship.classification
 
-     # Championship Teams
-     #
-     championship.teams
+# Championship Teams
+#
+championship.teams
 
-     # Matches
-     #
-     matches = championship.matches
+# Matches
+#
+matches = championship.matches
 
-     # Match
-     match = matches.first
+# Match
+match = matches.first
 
-     # Narrations
-     #
-     match.narrations
+# Narrations
+#
+match.narrations
 
-     # Live Feed
-     match.live
+# Live Feed
+match.live
 
-     # OR
-     live = FootStats::Live.find(match.source_id)
+# OR
+live = FootStats::Live.find(match.source_id)
 
-     # Goals
-     live.goals
+# Goals
+live.goals
 
-     # Scores
-     live.home_score
-     live.visitor_score
+# Scores
+live.home_score
+live.visitor_score
 
-     # Teams
-     live.home_team
-     live.visitor_team
+# Teams
+live.home_team
+live.visitor_team
 
-     # Getting the FootStats Response for all feeds.
-     #
-     live.response
+# Getting the FootStats Response for all feeds.
+#
+live.response
 
-     match.response
+match.response
 
-     championship.response
+championship.response
 ```
 
 ## Simulating responses
@@ -89,13 +95,12 @@ Or install it yourself as:
 With this gem you can simulate responses if you had some footstats responses stored in somewhere:
 
 ```ruby
+# Live Feed
+FootStats::Live.find(25563, response: FootStats::Response.new({ body: '....' }))
 
-     # Live Feed
-     FootStats::Live.find(25563, response: FootStats::Response.new({ body: '....' }))
-
-     # Narrations Feed
-     response = FootStats::Response.new(resource_key: FootStats::Narration.resource_key, body: '...')
-     FootStats::Narration.find(match: 25563, response: response)
+# Narrations Feed
+response = FootStats::Response.new(resource_key: FootStats::Narration.resource_key, body: '...')
+FootStats::Narration.find(match: 25563, response: response)
 ```
 
 ## Contributing
