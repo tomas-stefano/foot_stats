@@ -24,6 +24,7 @@ module FootStats
       end
 
       protected
+
       def fix_collection(collection, key)
         return [] if collection.nil?
 
